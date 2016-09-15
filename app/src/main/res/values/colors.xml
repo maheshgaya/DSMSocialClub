@@ -6,4 +6,5 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorTabs">#EEEEEE</color>
+    <color name="colorIcon">#616161</color>
 </resources>
