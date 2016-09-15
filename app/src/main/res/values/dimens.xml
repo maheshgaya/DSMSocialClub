@@ -4,7 +4,9 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="toolbar_elevation">2dp</dimen>
-    <dimen name="icon_margin">16dp</dimen>
+    <dimen name="icon_margin_left">16dp</dimen>
+    <dimen name="icon_margin_top">12dp</dimen>
+    <dimen name="icon_margin_bottom">20dp</dimen>
     <dimen name="icon_height">35dp</dimen>
     <dimen name="icon_width">35dp</dimen>
     <dimen name="text_padding">16dp</dimen>

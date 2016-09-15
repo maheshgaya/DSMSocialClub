@@ -23,6 +23,7 @@ Link:http://www.androidhive.info/2015/09/android-material-design-working-with-ta
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorTabs"
             app:tabMode="fixed"
             apptabGravity="fill"/>
 

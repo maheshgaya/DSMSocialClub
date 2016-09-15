@@ -7,7 +7,9 @@
         android:id="@+id/image_settings"
         android:layout_width="@dimen/icon_width"
         android:layout_height="@dimen/icon_height"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/icon_margin_left"
+        android:layout_marginTop="@dimen/icon_margin_top"
+        android:layout_marginBottom="@dimen/icon_margin_bottom"
         android:visibility="visible" />
     <TextView
         android:layout_width="match_parent"
