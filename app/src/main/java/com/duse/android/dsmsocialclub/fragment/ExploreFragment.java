@@ -13,7 +13,8 @@ import com.duse.android.dsmsocialclub.R;
  * Created by Mahesh Gaya on 9/14/16.
  */
 public class ExploreFragment extends Fragment{
-    //TODO: add logic to view list of events
+    //TODO: add logic to this class to view list of events
+
     public ExploreFragment(){
         //empty constructor
     }
