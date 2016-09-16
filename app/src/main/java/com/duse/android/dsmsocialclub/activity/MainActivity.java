@@ -22,6 +22,9 @@ import com.duse.android.dsmsocialclub.fragment.HomeFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+//All the code here will go to SocialActivity
+//This was just a test
+//MainActivity will deal with user profile setup
 public class MainActivity extends AppCompatActivity {
 
     //menu toolbar (the one with the title)
