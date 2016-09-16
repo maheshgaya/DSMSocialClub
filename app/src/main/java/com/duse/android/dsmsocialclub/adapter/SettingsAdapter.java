@@ -47,6 +47,7 @@ public class SettingsAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
+        //inflates list item textview and imageview
         if (convertView == null){
             convertView = LayoutInflater.from(mContext).inflate(R.layout.settings_item_list, null);
             holder = new ViewHolder(convertView);
@@ -54,13 +55,17 @@ public class SettingsAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        //sets the text for each item
         holder.settingsView.setText(mSettingsArray[position].toString());
-        Log.d(TAG, "getView: " + mSettingsArray[position]);
-        if (position == 1){
+        //Log.d(TAG, "getView: " + mSettingsArray[position]);
+
+        //sets the icon for each item
+        if (position == 0){
+            holder.settingsImageView.setImageDrawable(convertView.getResources().getDrawable(R.drawable.ic_label, null));
+        } else if (position == 1){
             Log.d(TAG, "getView: " + convertView.getResources().getString(R.string.settings_item_about));
             holder.settingsImageView.setImageDrawable(convertView.getResources().getDrawable(R.drawable.ic_info, null));
-        } else if (position == 0){
-            holder.settingsImageView.setImageDrawable(convertView.getResources().getDrawable(R.drawable.ic_label, null));
         }
 
         return convertView;
