@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Object obj = mListView.getAdapter().getItem(position);
-                Toast.makeText(getApplicationContext(), obj.toString() + " : "+ position, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), obj.toString() + " : "+ position, Toast.LENGTH_SHORT).show();
 
                 if (obj.toString() == getResources().getString(R.string.settings_item_interests)){
                     //TODO: start activity for interests
