@@ -5,6 +5,7 @@
     <string name="explore_fragment_title">Explore</string>
     <string name="favorites_fragment_title">Favorites</string>
     <string name="interests_title">Interests</string>
+    <string name="detail_title">Detail</string>
 
     <string name="action_settings">Settings</string>
 

@@ -39,6 +39,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
+        <activity android:name=".activity.DetailActivity"
+           android:label="@string/detail_title">
+
+        </activity>
     </application>
 
 </manifest>
