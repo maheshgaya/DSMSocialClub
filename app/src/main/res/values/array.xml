@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_items">
+        <item>@string/settings_item_interests</item>
+        <item>@string/settings_item_about</item>
+    </string-array>
+
+    <string-array name="interests_items">
+        <item>@string/interest_circus</item>
+        <item>@string/interest_comedy</item>
+        <item>@string/interest_culinary</item>
+        <item>@string/interest_dance_movement</item>
+        <item>@string/interest_education</item>
+        <item>@string/interest_featured_event</item>
+        <item>@string/interest_film</item>
+        <item>@string/interest_kids</item>
+        <item>@string/interest_lifestyle</item>
+        <item>@string/interest_literary</item>
+        <item>@string/interest_music</item>
+        <item>@string/interest_social</item>
+        <item>@string/interest_technology</item>
+        <item>@string/interest_theater</item>
+        <item>@string/interest_visual_art</item>
+    </string-array>
+</resources>

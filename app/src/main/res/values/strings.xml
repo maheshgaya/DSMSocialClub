@@ -12,8 +12,20 @@
     <string name="settings_item_interests">Interests</string>
     <string name="settings_item_about">About</string>
 
-    <string-array name="settings_items">
-        <item>@string/settings_item_interests</item>
-        <item>@string/settings_item_about</item>
-    </string-array>
+    <string name="interest_circus">Circus</string>
+    <string name="interest_comedy">Comedy</string>
+    <string name="interest_culinary">Culinary</string>
+    <string name="interest_dance_movement">Dance/Movement</string>
+    <string name="interest_education">Education</string>
+    <string name="interest_featured_event">Featured Event</string>
+    <string name="interest_film">Film</string>
+    <string name="interest_kids">Kids</string>
+    <string name="interest_lifestyle">Lifestyle</string>
+    <string name="interest_literary">Literary</string>
+    <string name="interest_music">Music</string>
+    <string name="interest_social">Social</string>
+    <string name="interest_technology">Technology</string>
+    <string name="interest_theater">Theater</string>
+    <string name="interest_visual_art">Visual Art</string>
+
 </resources>
