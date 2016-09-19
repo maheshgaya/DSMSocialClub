@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/colorCyan500</color>
+    <color name="colorPrimary">@color/colorCyan300</color>
     <color name="colorPrimaryDark">@color/colorCyan700</color>
-    <color name="colorAccent">@color/colorPinkA400</color>
+    <color name="colorAccent">@color/colorPink300</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorTabs">@color/colorCyan500</color>
+    <color name="colorTabs">@color/colorPrimary</color>
     <color name="colorIcon">#616161</color>
     
     <color name="colorGrey50">#FAFAFA</color>
@@ -18,7 +18,11 @@
     <color name="colorGrey700">#616161</color>
     
     <color name="colorPinkA400">#F50057</color>
+    <color name="colorPink300">#F06292</color>
+
     <color name="colorCyan50">#E0F7FA</color>
+    <color name="colorCyan200">#80DEEA</color>
+    <color name="colorCyan300">#4DD0E1</color>
     <color name="colorCyan500">#00BCD4</color>
     <color name="colorCyan700">#0097A7</color>
 </resources>
