@@ -7,4 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+
+    <style name="CardButton" parent="Base.Widget.AppCompat.Button">
+        <item name="android:drawablePadding">@dimen/icon_card_margin</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:backgroundTint">@color/colorWhite</item>
+        <item name="android:layout_marginLeft">@dimen/icon_card_margin</item>
+        <item name="android:layout_marginRight">@dimen/icon_card_margin</item>
+
+    </style>
 </resources>

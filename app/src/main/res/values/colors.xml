@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/colorGrey200</color>
-    <color name="colorPrimaryDark">@color/colorGrey600</color>
-    <color name="colorAccent">#00B0FF</color>
+    <color name="colorPrimary">@color/colorCyan500</color>
+    <color name="colorPrimaryDark">@color/colorCyan700</color>
+    <color name="colorAccent">@color/colorPinkA400</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorTabs">@color/colorGrey200</color>
+    <color name="colorTabs">@color/colorCyan500</color>
     <color name="colorIcon">#616161</color>
+    
+    <color name="colorGrey50">#FAFAFA</color>
     <color name="colorGrey100">#F5F5F5</color>
     <color name="colorGrey200">#EEEEEE</color>
     <color name="colorGrey300">#E0E0E0</color>
@@ -14,4 +16,9 @@
     <color name="colorGrey500">#9E9E9E</color>
     <color name="colorGrey600">#757575</color>
     <color name="colorGrey700">#616161</color>
+    
+    <color name="colorPinkA400">#F50057</color>
+    <color name="colorCyan50">#E0F7FA</color>
+    <color name="colorCyan500">#00BCD4</color>
+    <color name="colorCyan700">#0097A7</color>
 </resources>
