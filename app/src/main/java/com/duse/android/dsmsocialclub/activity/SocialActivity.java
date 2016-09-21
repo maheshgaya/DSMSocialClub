@@ -22,9 +22,7 @@ import com.duse.android.dsmsocialclub.fragment.HomeFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Mahesh Gaya on 9/14/16.
- */
+
 public class SocialActivity extends AppCompatActivity{
     //menu toolbar (the one with the title)
     private Toolbar mToolbar;

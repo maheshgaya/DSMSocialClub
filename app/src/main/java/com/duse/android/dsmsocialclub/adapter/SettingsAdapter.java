@@ -15,9 +15,7 @@ import android.widget.TextView;
 
 import com.duse.android.dsmsocialclub.R;
 
-/**
- * Created by Mahesh Gaya on 9/15/16.
- */
+
 public class SettingsAdapter extends BaseAdapter{
     private Context mContext;
     private String[] mSettingsArray;

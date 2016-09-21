@@ -9,25 +9,24 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Mahesh Gaya on 9/14/16.
- */
+
 public class EventsModel {
-    //TODO: add functions to this class
+
     //add JSON parsing and JSON array
     //Tutorial: <a>http://www.tutorialspoint.com/android/android_json_parser.htm</a>
     //Better Tutorial: <a>https://developer.android.com/reference/android/util/JsonReader.html</a>
     //@assignee: @Henry
-    String title;
-    String description;
-    String date;
-    String time;
-    String location;
-    String imageURL;
-    String tags;
+    String title; //the title of event
+    String description; //the description of the event
+    String date; //the date of the event
+    String time; //the time of the event
+    String location; //the location of the event
+    String imageURL; //the url of the event's image
+    String interests; //the interests that event concerns
 
     public EventsModel(String ptitle, String pdescription, String pdate, String ptime, String plocation, String pimageURL, String ptags){
-        title = ptitle; description = pdescription; date = pdate; time = ptime; location = plocation; imageURL = pimageURL; tags = ptags;
+        title = ptitle; description = pdescription; date = pdate; time = ptime; location = plocation; imageURL = pimageURL; interests = ptags;
+
     }
 
     public String getTitle() {
@@ -79,46 +78,12 @@ public class EventsModel {
     }
 
     public String getTags() {
-        return tags;
+        return interests;
     }
 
     public void setTags(String tags) {
-        this.tags = tags;
+        this.interests = tags;
     }
 }
 
-    public List<EventsModel> readJsonStream(InputStream in) throws IOException {
-        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
-        try {
-            return readEventsArray(reader);
-        } finally {
-            reader.close();
-        }
-    }
-    public List<EventsModel> readEventsArray(JsonReader reader) throws IOException {
-        List<EventsModel> events = new ArrayList<EventsModel>();
 
-        reader.beginArray();
-        while (reader.hasNext()) {
-            events.add(readEvent(reader));
-        }
-        reader.endArray();
-        return events;
-    }
-    public EventsModel readEvent(JsonReader reader) throws IOException {
-
-        reader.beginObject();
-        while (reader.hasNext()) {
-            String name = reader.nextName();
-            if (name.equals("Title")) title = reader.nextString();
-            else if (name.equals("Date")) date = reader.nextString();
-            else if (name.equals("Time")) time = reader.nextString();
-            else if (name.equals("Interests")) tags = reader.nextString();
-            else if (name.equals("Description")) description = reader.nextString();
-            else if (name.equals("ImageURL")) imageURL = reader.nextString();
-            else if (name.equals("Location")) location = reader.nextString();
-            else reader.skipValue();
-        }
-        reader.endObject();
-        return new EventsModel(title,description,date,time,location,imageURL,tags);
-    }

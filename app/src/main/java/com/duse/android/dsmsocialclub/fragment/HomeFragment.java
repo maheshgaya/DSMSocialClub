@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 
 import com.duse.android.dsmsocialclub.R;
 
-/**
- * Created by Mahesh Gaya on 9/14/16.
- */
 public class HomeFragment extends Fragment{
     //TODO: add logic to this class to view list of events
     public HomeFragment(){

@@ -17,9 +17,7 @@ import com.duse.android.dsmsocialclub.R;
 import com.duse.android.dsmsocialclub.adapter.SettingsAdapter;
 
 
-/**
- * Created by Mahesh Gaya on 9/14/16.
- */
+
 public class SettingsActivity extends AppCompatActivity{
     private SettingsAdapter mSettingsAdapter;
     private ListView mListView;

@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by Mahesh Gaya on 9/17/16.
- */
 
 //TODO: This Activity will show each individual events
     //So when you tap on the event this activity will be triggered
