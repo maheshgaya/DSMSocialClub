@@ -24,7 +24,7 @@ import com.duse.android.dsmsocialclub.fragment.HomeFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: This activity will need to create the user profile
+//TODO: This activity will contain the splashing screen with a timer
 public class MainActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
 
