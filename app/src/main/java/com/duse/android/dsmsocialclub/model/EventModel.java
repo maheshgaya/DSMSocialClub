@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EventsModel {
+public class EventModel {
 
     //add JSON parsing and JSON array
     //Tutorial: <a>http://www.tutorialspoint.com/android/android_json_parser.htm</a>
@@ -24,7 +24,7 @@ public class EventsModel {
     String imageURL; //the url of the event's image
     String interests; //the interests that event concerns
 
-    public EventsModel(String ptitle, String pdescription, String pdate, String ptime, String plocation, String pimageURL, String ptags){
+    public EventModel(String ptitle, String pdescription, String pdate, String ptime, String plocation, String pimageURL, String ptags){
         title = ptitle; description = pdescription; date = pdate; time = ptime; location = plocation; imageURL = pimageURL; interests = ptags;
 
     }

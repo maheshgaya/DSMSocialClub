@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.duse.android.dsmsocialclub.R;
+import com.duse.android.dsmsocialclub.model.EventModel;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 
 public class ExploreFragment extends Fragment{
@@ -27,4 +32,5 @@ public class ExploreFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_explore, container, false);
     }
+
 }
