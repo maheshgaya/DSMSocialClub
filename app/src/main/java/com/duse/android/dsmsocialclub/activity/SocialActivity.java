@@ -30,12 +30,7 @@ public class SocialActivity extends AppCompatActivity{
     private TabLayout mTabLayout;
     //contains the fragment home, explore, favorites
     private ViewPager mViewPager;
-    //icons for tabs
-    private int[] tabIcons = {
-            R.drawable.ic_home,
-            R.drawable.ic_event,
-            R.drawable.ic_star
-    };
+
 
 
     @Override
@@ -53,15 +48,10 @@ public class SocialActivity extends AppCompatActivity{
         setupViewPager(mViewPager);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
-        setupTabIcons();
 
     }
 
-    private void setupTabIcons() {
-        mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        mTabLayout.getTabAt(2).setIcon(tabIcons[2]);
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
