@@ -8,10 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.duse.android.dsmsocialclub.R;
+import com.duse.android.dsmsocialclub.model.EventModel;
 
 
 public class FavoritesFragment extends Fragment {
     //TODO: add logic to this class to view list of events
+
+    private EventModel[] events;
+
     public FavoritesFragment(){
         //empty constructor required
     }

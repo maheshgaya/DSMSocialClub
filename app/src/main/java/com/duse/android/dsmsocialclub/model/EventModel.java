@@ -1,5 +1,7 @@
 package com.duse.android.dsmsocialclub.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.JsonReader;
 import android.util.JsonToken;
 
@@ -10,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EventModel {
+public class EventModel implements Parcelable{
 
     //add JSON parsing and JSON array
     //Tutorial: <a>http://www.tutorialspoint.com/android/android_json_parser.htm</a>
-    //Better Tutorial: <a>https://developer.android.com/reference/android/util/JsonReader.html</a>
+    //Tutorial: <a>https://developer.android.com/reference/android/util/JsonReader.html</a>
     //@assignee: @Henry
     String title; //the title of event
     String description; //the description of the event
@@ -24,9 +26,25 @@ public class EventModel {
     String imageURL; //the url of the event's image
     String interests; //the interests that event concerns
 
-    public EventModel(String ptitle, String pdescription, String pdate, String ptime, String plocation, String pimageURL, String ptags){
-        title = ptitle; description = pdescription; date = pdate; time = ptime; location = plocation; imageURL = pimageURL; interests = ptags;
+    public EventModel(String title, String description, String date, String time, String location, String imageURL, String tags){
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        this.imageURL = imageURL;
+        this.interests = tags;
 
+    }
+
+    private EventModel(Parcel in){
+        title = in.readString();
+        description = in.readString();
+        date = in.readString();
+        time = in.readString();
+        location = in.readString();
+        imageURL = in.readString();
+        interests = in.readString();
     }
 
     public String getTitle() {
@@ -84,6 +102,37 @@ public class EventModel {
     public void setTags(String tags) {
         this.interests = tags;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(title);
+        parcel.writeString(description);
+        parcel.writeString(date);
+        parcel.writeString(time);
+        parcel.writeString(location);
+        parcel.writeString(imageURL);
+        parcel.writeString(interests);
+
+    }
+    public static final Parcelable.Creator<EventModel> CREATOR = new Parcelable.Creator<EventModel>(){
+        @Override
+        public EventModel createFromParcel(Parcel parcel) {
+            return new EventModel(parcel);
+        }
+
+        @Override
+        public EventModel[] newArray(int i) {
+            return new EventModel[i];
+        }
+
+
+
+    };
 }
 
 
