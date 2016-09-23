@@ -26,14 +26,15 @@ public class EventModel implements Parcelable{
     String imageURL; //the url of the event's image
     String interests; //the interests that event concerns
 
-    public EventModel(String title, String description, String date, String time, String location, String imageURL, String tags){
+    public EventModel(String title, String description, String date, String time, String location,
+                      String imageURL, String interests){
         this.title = title;
         this.description = description;
         this.date = date;
         this.time = time;
         this.location = location;
         this.imageURL = imageURL;
-        this.interests = tags;
+        this.interests = interests;
 
     }
 
@@ -95,7 +96,7 @@ public class EventModel implements Parcelable{
         this.imageURL = imageURL;
     }
 
-    public String getTags() {
+    public String getInterests() {
         return interests;
     }
 
