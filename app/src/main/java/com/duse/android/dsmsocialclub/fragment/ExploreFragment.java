@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.duse.android.dsmsocialclub.R;
@@ -22,21 +23,31 @@ import com.duse.android.dsmsocialclub.model.EventModel;
 
 import java.util.List;
 
+/**
+ * This will show all the events available
+ * User will be able to favorite or unfavorite the events
+ */
 
 public class ExploreFragment extends Fragment{
-    private EventModel[] mEvents = {};
-    private EventAdapter mEventAdapter;
-    private RecyclerView mRecycleView;
+    private EventModel[] mEvents = {}; //store events
+    private EventAdapter mEventAdapter; //use for recycleview/cardview
+    private RecyclerView mRecycleView; //use for UI
 
+    /**
+     * onStart()
+     * get updates of events if the array is zero
+     */
     @Override
     public void onStart() {
         super.onStart();
+        //if array is zero, get data
         if (mEvents.length == 0) {
             updateEvents();
         }
     }
 
     public void updateEvents(){
+        //get event updates
         FetchEventTask fetchEventTask = new FetchEventTask();
         //TODO: Add params for sorting, shared preferences
         fetchEventTask.execute();
@@ -49,12 +60,15 @@ public class ExploreFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //saves instance state for fragment
+        setRetainInstance(true);
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //Setup Cardview
         View rootView = inflater.inflate(R.layout.fragment_explore, container, false);
         mEventAdapter = new EventAdapter(getActivity(), mEvents);
         mRecycleView = (RecyclerView) rootView.findViewById(R.id.recycleview_events_explore);
@@ -63,6 +77,7 @@ public class ExploreFragment extends Fragment{
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecycleView.setLayoutManager(linearLayoutManager);
         mRecycleView.setAdapter(mEventAdapter);
+
         return rootView;
     }
 
@@ -71,6 +86,7 @@ public class ExploreFragment extends Fragment{
         private final String LOG_TAG = FetchEventTask.class.getSimpleName();
         @Override
         protected void onPostExecute(EventModel[] result) {
+            //if result is not empty, update adapter and the UI
             if (result != null){
                 mEvents = result;
                 try {
@@ -90,7 +106,7 @@ public class ExploreFragment extends Fragment{
 
         @Override
         protected EventModel[] doInBackground(Void... voids) {
-
+            //get events from json
             List<EventModel> eventList = new EventJsonGetter(getActivity()).getEventsList();
             EventModel[] events = eventList.toArray(new EventModel[eventList.size()]);
             return events;

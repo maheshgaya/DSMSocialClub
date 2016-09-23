@@ -18,6 +18,7 @@ public class EventModel implements Parcelable{
     //Tutorial: <a>http://www.tutorialspoint.com/android/android_json_parser.htm</a>
     //Tutorial: <a>https://developer.android.com/reference/android/util/JsonReader.html</a>
     //@assignee: @Henry
+    int id;
     String title; //the title of event
     String description; //the description of the event
     String date; //the date of the event
@@ -26,8 +27,10 @@ public class EventModel implements Parcelable{
     String imageURL; //the url of the event's image
     String interests; //the interests that event concerns
 
-    public EventModel(String title, String description, String date, String time, String location,
+    public EventModel(int id, String title, String description,
+                      String date, String time, String location,
                       String imageURL, String interests){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
@@ -38,7 +41,9 @@ public class EventModel implements Parcelable{
 
     }
 
+
     private EventModel(Parcel in){
+        id = in.readInt();
         title = in.readString();
         description = in.readString();
         date = in.readString();
@@ -46,6 +51,13 @@ public class EventModel implements Parcelable{
         location = in.readString();
         imageURL = in.readString();
         interests = in.readString();
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -111,6 +123,7 @@ public class EventModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
         parcel.writeString(title);
         parcel.writeString(description);
         parcel.writeString(date);

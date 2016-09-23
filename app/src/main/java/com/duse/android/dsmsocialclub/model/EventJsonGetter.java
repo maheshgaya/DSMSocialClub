@@ -37,7 +37,7 @@ public class EventJsonGetter {
      * This will read the data from Json and return an arraylist of the events
      */
     public ArrayList<EventModel> getEventsList(){
-        //intializing
+        //initializing
         eventsList = new ArrayList<>();
         String eventJson = null;
 
@@ -63,7 +63,8 @@ public class EventJsonGetter {
 
             for (int i = 0; i < eventJsonArray.length(); i++){
                 JSONObject eventObject = eventJsonArray.getJSONObject(i);
-                //int id = eventObject.getInt(Constant.EVENT_ID); //not needed, will use ArrayList index
+                //In real case, id should be a unique number
+                int id = eventObject.getInt(Constant.EVENT_ID);
                 String title = eventObject.getString(Constant.EVENT_TITLE);
                 String date = eventObject.getString(Constant.EVENT_DATE);
                 String time = eventObject.getString(Constant.EVENT_TIME);
@@ -72,7 +73,7 @@ public class EventJsonGetter {
                 String imageUrl = eventObject.getString(Constant.EVENT_IMAGE_URL);
                 String location = eventObject.getString(Constant.EVENT_LOCATION);
 
-                EventModel event = new EventModel(title, description, date, time, location, imageUrl, interest);
+                EventModel event = new EventModel(id, title, description, date, time, location, imageUrl, interest);
 
                 eventsList.add(event);
             }

@@ -14,6 +14,7 @@
     <dimen name="icon_button_height">32dp</dimen>
     <dimen name="icon_button_width">32dp</dimen>
     <dimen name="icon_card_margin">8dp</dimen>
+    <dimen name="icon_margin_end">8dp</dimen>
 
     <dimen name="card_elevation">4dp</dimen>
 
@@ -21,7 +22,7 @@
     <dimen name="text_title">24sp</dimen>
     <dimen name="text_date">14sp</dimen>
 
-    <dimen name="image_layout_height">150dp</dimen>
+    <dimen name="image_layout_height">180dp</dimen>
 
     <dimen name="button_elevation">0dp</dimen>
 </resources>
