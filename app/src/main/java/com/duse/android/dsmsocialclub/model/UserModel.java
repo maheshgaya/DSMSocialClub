@@ -2,8 +2,14 @@ package com.duse.android.dsmsocialclub.model;
 
 
 public class UserModel {
-    //TODO: add functions to this class
-    //add user information
-    //name, etc
-    //@assignee: @Ryan
+    //@assignee: @Henry
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 }

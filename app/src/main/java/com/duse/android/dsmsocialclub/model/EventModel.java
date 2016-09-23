@@ -15,7 +15,7 @@ public class EventModel {
     //add JSON parsing and JSON array
     //Tutorial: <a>http://www.tutorialspoint.com/android/android_json_parser.htm</a>
     //Better Tutorial: <a>https://developer.android.com/reference/android/util/JsonReader.html</a>
-    //@assignee: @Henry
+    //@author: @Henry
     String title; //the title of event
     String description; //the description of the event
     String date; //the date of the event
