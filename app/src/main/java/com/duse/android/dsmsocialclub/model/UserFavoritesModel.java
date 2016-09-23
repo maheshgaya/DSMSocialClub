@@ -8,8 +8,10 @@ public class UserFavoritesModel {
 
     protected String user; //String for referencing the user
     protected ArrayList<Integer> eventsArray = new ArrayList<Integer>(1); //an array to hold the numbers of the favorited events
-    eventsArray.set(0,-1); // initialize the array to -1 to ensure that event 0 is not contained
 
+    public UserFavoritesModel() {    //Constructor
+        eventsArray.set(0, -1); // initialize the array to -1 to ensure that event 0 is not contained
+    }
     public void addEvent(Integer eventID){    //function to add an event
         eventsArray.ensureCapacity(eventsArray.size()+1); //increase array size by 1
         eventsArray.add(eventID);   // append the event to the end

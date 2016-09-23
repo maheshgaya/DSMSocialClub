@@ -26,7 +26,6 @@ public class EventModel {
 
     public EventModel(String ptitle, String pdescription, String pdate, String ptime, String plocation, String pimageURL, String ptags){
         title = ptitle; description = pdescription; date = pdate; time = ptime; location = plocation; imageURL = pimageURL; interests = ptags;
-
     }
 
     public String getTitle() {
