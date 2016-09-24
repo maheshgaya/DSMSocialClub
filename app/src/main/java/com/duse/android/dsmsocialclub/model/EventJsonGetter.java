@@ -72,7 +72,8 @@ public class EventJsonGetter {
                 String imageUrl = eventObject.getString(Constant.EVENT_IMAGE_URL);
                 String location = eventObject.getString(Constant.EVENT_LOCATION);
 
-                EventModel event = new EventModel(title, date, time,  interest, description, imageUrl, location);
+                EventModel event = new EventModel(title, description, date, time, location, imageUrl, interest);
+
                 eventsList.add(event);
             }
 
