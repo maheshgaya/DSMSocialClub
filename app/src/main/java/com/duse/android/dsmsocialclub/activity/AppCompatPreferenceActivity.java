@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 /**
  * Created by Mahesh Gaya on 9/24/16.
+ * code provided by Udacity
  */
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
