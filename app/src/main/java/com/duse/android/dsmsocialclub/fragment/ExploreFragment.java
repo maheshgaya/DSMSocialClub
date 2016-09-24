@@ -49,7 +49,7 @@ public class ExploreFragment extends Fragment{
     public void updateEvents(){
         //get event updates
         FetchEventTask fetchEventTask = new FetchEventTask();
-        //TODO: Add params for sorting, shared preferences
+        //TODO: Add params for sorting, shared preferences, if have time
         fetchEventTask.execute();
     }
 
@@ -82,7 +82,7 @@ public class ExploreFragment extends Fragment{
     }
 
 
-    public class FetchEventTask extends AsyncTask<Void, Void, EventModel[]> {
+    private class FetchEventTask extends AsyncTask<Void, Void, EventModel[]> {
         private final String LOG_TAG = FetchEventTask.class.getSimpleName();
         @Override
         protected void onPostExecute(EventModel[] result) {

@@ -6,16 +6,30 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class UserModel implements Parcelable{
-    //@assignee: @Henry, Mahesh
+    //@assignee: @Henry
     private String name;
+    private String[] interests;
 
-    public UserModel(Context context, String name){
+
+    public UserModel(Context context, String name, String[] interests){
         this.name = name;
+        this.interests = interests;
     }
 
     private UserModel(Parcel in){
+        name = in.readString();
+        interests = (String[])in.readSerializable();
 
     }
+
+    public String[] getInterests() {
+        return interests;
+    }
+
+    public void setInterests(String[] interests) {
+        this.interests = interests;
+    }
+
     public String getName() {
         return name;
     }
@@ -35,7 +49,8 @@ public class UserModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        parcel.writeString(name);
+        parcel.writeSerializable(interests);
     }
     public static final Parcelable.Creator<UserModel> CREATOR = new Parcelable.Creator<UserModel>(){
         @Override

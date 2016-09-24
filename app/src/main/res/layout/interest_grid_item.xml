@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:elevation="@dimen/card_elevation">
+
+    <ImageView
+        android:id="@+id/imageview_interest"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        tools:src="@drawable/interests_technology" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/icon_card_margin">
+        <TextView
+            android:id="@+id/textview_interest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Technology"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkbox_interest"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</LinearLayout>

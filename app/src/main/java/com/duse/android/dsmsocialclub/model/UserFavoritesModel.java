@@ -1,37 +1,25 @@
 package com.duse.android.dsmsocialclub.model;
 
 
-import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
 public class UserFavoritesModel implements Parcelable{
-    //@author: @Henry, @Mahesh
+    //@author: @Henry
 
-    private ArrayList<Integer> favoriteEvents = new ArrayList<Integer>(){} ;//initialize Array
+    private Integer eventID;//initialize Array
 
-    public UserFavoritesModel(Context context, int eventID) {    //Constructor
-        this.favoriteEvents.add(eventID);
+    public UserFavoritesModel(int eventID) {    //Constructor
+        this.eventID = eventID;
     }
 
     private UserFavoritesModel(Parcel in){
-        favoriteEvents = (ArrayList<Integer>) in.readSerializable();
+        eventID = in.readInt();
     }
 
-    public void addEvent(int eventID){    //function to add an event
-        favoriteEvents.add(eventID);
-    }
-
-    public void removeEvent(int eventID){    // function to remove an event
-        if (favoriteEvents.contains(eventID)){
-            favoriteEvents.remove(eventID); //removing the event
-        }
-    }
 
     public String toString(){
-        return favoriteEvents.toString();
+        return eventID.toString();
     }
     @Override
     public int describeContents() {
@@ -40,7 +28,7 @@ public class UserFavoritesModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeSerializable(favoriteEvents);
+        parcel.writeInt(eventID);
     }
     public static final Parcelable.Creator<UserFavoritesModel> CREATOR = new Parcelable.Creator<UserFavoritesModel>(){
         @Override
