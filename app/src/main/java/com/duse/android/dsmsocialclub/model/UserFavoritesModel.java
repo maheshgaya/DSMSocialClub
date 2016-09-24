@@ -1,37 +1,59 @@
 package com.duse.android.dsmsocialclub.model;
 
 
+import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class UserFavoritesModel {
-    //@author: @Henry
+public class UserFavoritesModel implements Parcelable{
+    //@author: @Henry, @Mahesh
 
-    protected String user; //String for referencing the user
-    protected ArrayList<Integer> eventsArray = new ArrayList<Integer>(1); //an array to hold the numbers of the favorited events
+    private ArrayList<Integer> favoriteEvents = new ArrayList<Integer>(){} ;//initialize Array
 
-    public UserFavoritesModel() {    //Constructor
-        eventsArray.set(0, -1); // initialize the array to -1 to ensure that event 0 is not contained
-    }
-    public void addEvent(Integer eventID){    //function to add an event
-        eventsArray.ensureCapacity(eventsArray.size()+1); //increase array size by 1
-        eventsArray.add(eventID);   // append the event to the end
+    public UserFavoritesModel(Context context, int eventID) {    //Constructor
+        this.favoriteEvents.add(eventID);
     }
 
-    public void removeEvent(Integer eventID){    // function to remove an event
-        if (eventsArray.contains(eventID)){
-            eventsArray.remove(eventID); //removing the event
+    private UserFavoritesModel(Parcel in){
+        favoriteEvents = (ArrayList<Integer>) in.readSerializable();
+    }
+
+    public void addEvent(int eventID){    //function to add an event
+        favoriteEvents.add(eventID);
+    }
+
+    public void removeEvent(int eventID){    // function to remove an event
+        if (favoriteEvents.contains(eventID)){
+            favoriteEvents.remove(eventID); //removing the event
         }
     }
 
-    public boolean contains(Integer eventID){  // function to test if an event is contained
-        return eventsArray.contains(eventID);
+    public String toString(){
+        return favoriteEvents.toString();
+    }
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public String getUser() {
-        return user;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeSerializable(favoriteEvents);
     }
+    public static final Parcelable.Creator<UserFavoritesModel> CREATOR = new Parcelable.Creator<UserFavoritesModel>(){
+        @Override
+        public UserFavoritesModel createFromParcel(Parcel parcel) {
+            return new UserFavoritesModel(parcel);
+        }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
+        @Override
+        public UserFavoritesModel[] newArray(int i) {
+            return new UserFavoritesModel[i];
+        }
+
+
+
+    };
 }
