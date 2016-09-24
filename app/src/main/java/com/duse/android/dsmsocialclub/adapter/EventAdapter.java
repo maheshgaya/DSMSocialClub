@@ -90,7 +90,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                     .load(imageUrl)
                     .error(R.drawable.ic_photo_placeholder)
                     .into(holder.eventImageView);
-            Log.d(TAG, "getView: Picasso executed");
+            //Log.d(TAG, "getView: Picasso executed");
         }catch (java.lang.IllegalArgumentException e){
             Log.e(TAG, "getView: " + e.getMessage(), e );
             e.printStackTrace();
