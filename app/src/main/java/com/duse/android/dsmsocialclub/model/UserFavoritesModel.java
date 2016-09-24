@@ -10,21 +10,21 @@ public class UserFavoritesModel {
     protected ArrayList<Integer> eventsArray = new ArrayList<Integer>(1); //an array to hold the numbers of the favorited events
 
     public UserFavoritesModel() {    //Constructor
-        eventsArray.set(0, -1); // initialize the array to -1 to ensure that event 0 is not contained
+        this.eventsArray.set(0, -1); // initialize the array to -1 to ensure that event 0 is not contained
     }
     public void addEvent(Integer eventID){    //function to add an event
-        eventsArray.ensureCapacity(eventsArray.size()+1); //increase array size by 1
-        eventsArray.add(eventID);   // append the event to the end
+        this.eventsArray.ensureCapacity(this.eventsArray.size()+1); //increase array size by 1
+        this.eventsArray.add(eventID);   // append the event to the end
     }
 
     public void removeEvent(Integer eventID){    // function to remove an event
-        if (eventsArray.contains(eventID)){
-            eventsArray.remove(eventID); //removing the event
+        if (this.eventsArray.contains(eventID)){
+            this.eventsArray.remove(eventID); //removing the event
         }
     }
 
     public boolean contains(Integer eventID){  // function to test if an event is contained
-        return eventsArray.contains(eventID);
+        return this.eventsArray.contains(eventID);
     }
 
     public String getUser() {
