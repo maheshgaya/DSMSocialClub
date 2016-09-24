@@ -1,6 +1,13 @@
 package com.duse.android.dsmsocialclub.activity;
 
 
-public class SettingsActivity extends AppCompatPreferenceActivity{
+import android.preference.Preference;
 
+public class SettingsActivity extends AppCompatPreferenceActivity
+        implements Preference.OnPreferenceChangeListener{
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object o) {
+        return false;
+    }
 }

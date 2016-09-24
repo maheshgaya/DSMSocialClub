@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <MultiSelectListPreference
+        android:title="@string/pref_interests_label"
+        android:key="@string/pref_interests_key"
+        android:defaultValue="@array/interests_values"
+        android:entryValues="@array/interests_values"
+        android:entries="@array/interests_items"/>
 </PreferenceScreen>

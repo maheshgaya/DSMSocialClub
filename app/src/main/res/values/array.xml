@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="settings_items">
-        <item>@string/settings_item_interests</item>
-        <item>@string/settings_item_about</item>
-    </string-array>
 
     <string-array name="interests_items">
         <item>@string/interest_circus</item>
@@ -21,5 +17,23 @@
         <item>@string/interest_technology</item>
         <item>@string/interest_theater</item>
         <item>@string/interest_visual_art</item>
+    </string-array>
+
+    <string-array name="interests_values">
+        <item>@string/interest_circus_value</item>
+        <item>@string/interest_comedy_value</item>
+        <item>@string/interest_culinary_value</item>
+        <item>@string/interest_dance_movement_value</item>
+        <item>@string/interest_education_value</item>
+        <item>@string/interest_featured_event_value</item>
+        <item>@string/interest_film_value</item>
+        <item>@string/interest_kids_value</item>
+        <item>@string/interest_lifestyle_value</item>
+        <item>@string/interest_literary_value</item>
+        <item>@string/interest_music_value</item>
+        <item>@string/interest_social_value</item>
+        <item>@string/interest_technology_value</item>
+        <item>@string/interest_theater_value</item>
+        <item>@string/interest_visual_art_value</item>
     </string-array>
 </resources>
