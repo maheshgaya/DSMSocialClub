@@ -16,10 +16,9 @@ public class EventModel implements Parcelable{
 
     //add JSON parsing and JSON array
     //Tutorial: <a>http://www.tutorialspoint.com/android/android_json_parser.htm</a>
-    //Better Tutorial: <a>https://developer.android.com/reference/android/util/JsonReader.html</a>
-    //@author: @Henry
     //Tutorial: <a>https://developer.android.com/reference/android/util/JsonReader.html</a>
     //@assignee: @Henry
+    int id;
     String title; //the title of event
     String description; //the description of the event
     String date; //the date of the event
@@ -27,9 +26,12 @@ public class EventModel implements Parcelable{
     String location; //the location of the event
     String imageURL; //the url of the event's image
     String interests; //the interests that event concerns
+    Boolean favorite; //is event favorite or not (will use SQLite)
 
-    public EventModel(String title, String description, String date, String time, String location,
+    public EventModel(int id, String title, String description,
+                      String date, String time, String location,
                       String imageURL, String interests){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
@@ -40,7 +42,9 @@ public class EventModel implements Parcelable{
 
     }
 
+
     private EventModel(Parcel in){
+        id = in.readInt();
         title = in.readString();
         description = in.readString();
         date = in.readString();
@@ -48,6 +52,14 @@ public class EventModel implements Parcelable{
         location = in.readString();
         imageURL = in.readString();
         interests = in.readString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -102,8 +114,15 @@ public class EventModel implements Parcelable{
         return interests;
     }
 
-    public void setTags(String tags) {
-        this.interests = tags;
+    public void setInterests(String interests) {
+        this.interests = interests;
+    }
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 
     @Override
@@ -113,6 +132,7 @@ public class EventModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
         parcel.writeString(title);
         parcel.writeString(description);
         parcel.writeString(date);
@@ -120,6 +140,7 @@ public class EventModel implements Parcelable{
         parcel.writeString(location);
         parcel.writeString(imageURL);
         parcel.writeString(interests);
+
     }
     public static final Parcelable.Creator<EventModel> CREATOR = new Parcelable.Creator<EventModel>(){
         @Override
