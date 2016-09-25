@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.duse.android.dsmsocialclub.R;
 import com.duse.android.dsmsocialclub.fragment.ExploreFragment;
@@ -64,6 +65,11 @@ public class SocialActivity extends AppCompatActivity{
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
             startActivity(settingsIntent);
 
+
+        }else if (id == R.id.action_about){
+            //opens about activity
+            Intent aboutIntent = new Intent(this, AboutActivity.class);
+            startActivity(aboutIntent);
         }
         return super.onOptionsItemSelected(item);
     }

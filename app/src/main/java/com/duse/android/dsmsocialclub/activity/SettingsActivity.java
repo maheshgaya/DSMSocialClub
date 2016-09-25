@@ -1,77 +1,79 @@
 package com.duse.android.dsmsocialclub.activity;
 
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.preference.ListPreference;
+import android.preference.MultiSelectListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.duse.android.dsmsocialclub.R;
-import com.duse.android.dsmsocialclub.adapter.SettingsAdapter;
 
-
-
-public class SettingsActivity extends AppCompatActivity{
-    private SettingsAdapter mSettingsAdapter;
-    private ListView mListView;
-    //TAG = ClassName, i.e. SettingsActivity
-    private final  String TAG = this.getClass().getSimpleName();
-
-    private Toolbar mToolbar;
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-
-        mToolbar = (Toolbar) findViewById(R.id.toolbar_settings);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-        String[] settingsArray;
-        settingsArray = getResources().getStringArray(R.array.settings_items);
-
-        mListView = (ListView)findViewById(R.id.listview_settings);
-        mSettingsAdapter = new SettingsAdapter(this, settingsArray);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Object obj = mListView.getAdapter().getItem(position);
-                Toast.makeText(getApplicationContext(), obj.toString() + " : "+ position, Toast.LENGTH_SHORT).show();
-
-                if (obj.toString() == getResources().getString(R.string.settings_item_interests)){
-                    //TODO: start activity for interests
-                } else if (obj.toString() == getResources().getString(R.string.settings_item_about)){
-                    //TODO: start activity for about
-                }
-
-            }
-        });
-        mListView.setAdapter(mSettingsAdapter);
-    }
+public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            if (!super.onOptionsItemSelected(item)) {
                 NavUtils.navigateUpFromSameTask(this);
-                return true;
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    public boolean onCreateOptionMenu(Menu menu)
-    {
-        //blank, not needed
-        return true;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTitle(getResources().getString(R.string.action_settings));
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
+
     }
 
+
+    public static class SettingsFragment extends PreferenceFragment
+            implements Preference.OnPreferenceChangeListener{
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            addPreferencesFromResource(R.xml.general_settings);
+            bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_interests_category_key)));
+        }
+        private void bindPreferenceSummaryToValue(Preference preference) {
+            // Set the listener to watch for value changes.
+            preference.setOnPreferenceChangeListener(this);
+
+            // Trigger the listener immediately with the preference's
+            // current value.
+            onPreferenceChange(preference,
+                    PreferenceManager
+                            .getDefaultSharedPreferences(preference.getContext())
+                            .getString(preference.getKey(), ""));
+        }
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object value) {
+            String stringValue = value.toString();
+            if (preference instanceof ListPreference) {
+
+                // For list preferences, look up the correct display value in
+                // the preference's 'entries' list (since they have separate labels/values).
+                ListPreference listPreference = (ListPreference) preference;
+                int prefIndex = listPreference.findIndexOfValue(stringValue);
+                if (prefIndex >= 0) {
+                    preference.setSummary(listPreference.getEntries()[prefIndex]);
+                }
+            } else {
+                // For other preferences, set the summary to the value's simple string representation.
+                preference.setSummary(stringValue);
+            }
+            return true;
+        }
+    }
 }

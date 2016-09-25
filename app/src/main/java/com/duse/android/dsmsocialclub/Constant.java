@@ -15,5 +15,5 @@ public class Constant {
     public static final String EVENT_LOCATION = "Location";
 
     //Parcelables
-    //TODO: add tags for parcelable
+    public static final String EXTRA_EVENT_PARCELABLE = "com.duse.android.dsmsocialclub.EXTRA_EVENT_PARCELABLE";
 }

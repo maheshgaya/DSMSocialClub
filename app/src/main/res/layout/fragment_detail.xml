@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.DetailActivity$DetailFragment"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imageview_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:src="@drawable/interests_technology"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toStartOf="@+id/button_detail_star">
+                <TextView
+                    android:id="@+id/textview_detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_title"
+                    tools:text="HELLO WORLD! THIS IS AN EVENT. This event is awesome."/>
+                <TextView
+                    android:id="@+id/textview_detail_interest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Technology"/>
+                <TextView
+                    android:id="@+id/textview_detail_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    tools:text="Wednesday, September 12, 2016"/>
+                <TextView
+                    android:id="@+id/textview_detail_time_location_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    tools:text="02:00-03:30pm | Art Studio | $10"/>
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/button_detail_star"
+                tools:src="@drawable/ic_star_border"
+                android:layout_width="@dimen/icon_button_width"
+                android:layout_height="@dimen/icon_button_height"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                style="?android:attr/borderlessButtonStyle"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/textview_detail_description"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="This is the description of the event. This event will be blah, blah, blah"/>
+    </LinearLayout>
+</ScrollView>
