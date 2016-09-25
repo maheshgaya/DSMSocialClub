@@ -8,6 +8,16 @@
     <string name="detail_title">Detail</string>
 
     <string name="action_settings">Settings</string>
+    <string name="general_settings">General Settings</string>
+
+    <string name="pref_sort_by_label">Sort by</string>
+    <string name="pref_sort_by_key" translatable="false">sortby</string>
+
+    <string name="pref_sort_by_interest_label">Interest</string>
+    <string name="pref_sort_by_interest_key" translatable="false">sortbyinterest</string>
+    <string name="pref_sort_by_date_label">Date</string>
+    <string name="pref_sort_by_date_key" translatable="false">sortbydate</string>
+    <string name="pref_sort_by_default_key" translatable="false">sortbydate</string>
 
     <string name="pref_interests_category_label">Interests</string>
     <string name="pref_interests_category_key" translatable="false">interest</string>

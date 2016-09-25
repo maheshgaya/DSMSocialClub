@@ -36,4 +36,14 @@
         <item>@string/interest_theater_value</item>
         <item>@string/interest_visual_art_value</item>
     </string-array>
+
+    <string-array name="pref_sort_by_options">
+        <item>@string/pref_sort_by_date_label</item>
+        <item>@string/pref_sort_by_interest_label</item>
+    </string-array>
+
+    <string-array name="pref_sort_by_values">
+        <item>@string/pref_sort_by_date_key</item>
+        <item>@string/pref_sort_by_interest_key</item>
+    </string-array>
 </resources>
