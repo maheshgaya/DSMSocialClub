@@ -62,13 +62,12 @@ public class SocialActivity extends AppCompatActivity{
         //handles the logic for the options selected
         if (id == R.id.action_settings){
             //opens settings activity
-            Toast.makeText(getApplicationContext(), "Work in Progress", Toast.LENGTH_SHORT).show();
-            /*
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
             startActivity(settingsIntent);
-            */
+
 
         }else if (id == R.id.action_about){
+            //opens about activity
             Intent aboutIntent = new Intent(this, AboutActivity.class);
             startActivity(aboutIntent);
         }

@@ -28,19 +28,13 @@
 
         <activity android:name=".activity.SettingsActivity"
             android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppActionBarTheme"
             android:label="@string/action_settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
 
-        <activity android:name=".activity.InterestsActivity"
-            android:parentActivityName=".activity.MainActivity"
-            android:label="@string/interests_title">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainActivity" />
-        </activity>
         <activity android:name=".activity.DetailActivity"
            android:label="@string/detail_title"
             android:theme="@style/AppActionBarTheme"

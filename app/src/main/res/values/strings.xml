@@ -9,8 +9,8 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="pref_interests_label">Change interests</string>
-    <string name="pref_interests_key" translatable="false">interest</string>
+    <string name="pref_interests_category_label">Interests</string>
+    <string name="pref_interests_category_key" translatable="false">interest</string>
 
     <string name="settings_item_interests">Interests</string>
     <string name="settings_item_about">About</string>
