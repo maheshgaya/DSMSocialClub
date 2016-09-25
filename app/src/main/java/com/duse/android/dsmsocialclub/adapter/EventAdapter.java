@@ -1,14 +1,15 @@
 package com.duse.android.dsmsocialclub.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import com.duse.android.dsmsocialclub.Constant;
 import com.duse.android.dsmsocialclub.R;
 import com.duse.android.dsmsocialclub.activity.DetailActivity;
+import com.duse.android.dsmsocialclub.database.FavoriteContract;
+import com.duse.android.dsmsocialclub.database.FavoriteDBHelper;
 import com.duse.android.dsmsocialclub.model.EventModel;
 import com.squareup.picasso.Picasso;
 
@@ -30,10 +33,20 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
     private List<EventModel> eventList;
     private Context mContext;
 
+    private FavoriteDBHelper favoriteDBHelper;
+    private SQLiteDatabase dbWrite;
+    private SQLiteDatabase dbRead;
+
     private final String TAG = EventAdapter.class.getSimpleName();
     public EventAdapter(Context context, EventModel[] events){
         eventList = Arrays.asList(events);
         mContext = context;
+        //initialize database
+        favoriteDBHelper = new FavoriteDBHelper(context);
+        //get the ability to write to database
+        dbWrite = favoriteDBHelper.getWritableDatabase();
+        //get the ability to write to database
+        dbRead = favoriteDBHelper.getReadableDatabase();
     }
 
 
@@ -47,7 +60,26 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final EventModel event = eventList.get(position);
-        //TODO: check for starred or unstarred
+        //Create a new map of values, where column names are the keys
+        final ContentValues values = new ContentValues();
+        //read from sqlite
+        String[] projection = {
+                FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID,
+                FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN
+        };
+        String selection = FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID + " =?";
+        String[] selectionArgs = {Integer.toString(event.getId())};
+        Cursor cursor = dbRead.query(
+                FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, //Table name
+                projection, //columns to return
+                selection, //columns for WHERE Clause
+                selectionArgs, //Values for WHERE Clause
+                null, //don't group the rows
+                null, //don't filter by row groups
+                null //don't sort(since value will be unique)
+        );
+
+
         //holder.eventStarButton.setImageResource(R.drawable.ic_star);
         //holder.eventStarButton.setTag("2");
         holder.eventStarButton.setImageResource(R.drawable.ic_star_border);
@@ -60,9 +92,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                     if (holder.eventStarButton.getTag().equals("2")){
                         holder.eventStarButton.setImageResource(R.drawable.ic_star_border);
                         holder.eventStarButton.setTag("1");
+                        //remove from database
+
+
                     } else {
                         holder.eventStarButton.setImageResource(R.drawable.ic_star);
                         holder.eventStarButton.setTag("2");
+                        //add to database
+                        values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID, event.getId());
+                        values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN, Constant.FAVORITE_BOOLEAN_TRUE);
+                        dbWrite.insert(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, null, values);
                     }
                 }
             }

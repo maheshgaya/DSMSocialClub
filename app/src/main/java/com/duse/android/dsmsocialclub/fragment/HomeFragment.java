@@ -3,7 +3,6 @@ package com.duse.android.dsmsocialclub.fragment;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.duse.android.dsmsocialclub.R;
 import com.duse.android.dsmsocialclub.adapter.EventAdapter;
-import com.duse.android.dsmsocialclub.model.EventJsonGetter;
+import com.duse.android.dsmsocialclub.database.EventJsonGetter;
 import com.duse.android.dsmsocialclub.model.EventModel;
 
 import java.util.List;
@@ -36,8 +35,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        //if array is zero, get data
-
+        //get data
         updateEvents();
 
     }
@@ -97,7 +95,8 @@ public class HomeFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         //Setup Cardview
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         mEventAdapter = new EventAdapter(getActivity(), mEvents);
@@ -143,7 +142,7 @@ public class HomeFragment extends Fragment {
             //get events from json
             List<EventModel> eventList = new EventJsonGetter(getActivity()).getEventsList(params);
             EventModel[] events = eventList.toArray(new EventModel[eventList.size()]);
-            Log.d(LOG_TAG, "doInBackground: " + events.toString());
+            //Log.d(LOG_TAG, "doInBackground: " + events.toString());
             return events;
         }
     }

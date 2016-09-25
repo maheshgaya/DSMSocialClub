@@ -1,8 +1,5 @@
 package com.duse.android.dsmsocialclub.fragment;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,12 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListView;
 
 import com.duse.android.dsmsocialclub.R;
 import com.duse.android.dsmsocialclub.adapter.EventAdapter;
-import com.duse.android.dsmsocialclub.model.EventJsonGetter;
+import com.duse.android.dsmsocialclub.database.EventJsonGetter;
 import com.duse.android.dsmsocialclub.model.EventModel;
 
 import java.util.List;
@@ -40,10 +35,9 @@ public class ExploreFragment extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
-        //if array is zero, get data
-        if (mEvents.length == 0) {
-            updateEvents();
-        }
+        //get data
+        updateEvents();
+
     }
 
     public void updateEvents(){

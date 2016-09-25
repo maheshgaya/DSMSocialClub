@@ -16,4 +16,8 @@ public class Constant {
 
     //Parcelables
     public static final String EXTRA_EVENT_PARCELABLE = "com.duse.android.dsmsocialclub.EXTRA_EVENT_PARCELABLE";
+
+    //SQLite
+    public static final int FAVORITE_BOOLEAN_FALSE = 0;
+    public static final int FAVORITE_BOOLEAN_TRUE = 1;
 }

@@ -74,6 +74,7 @@ public class DetailActivity extends AppCompatActivity {
         //the views
         ImageView detailImageView;
         TextView detailTitleTextView;
+        TextView detailInterestTextView;
         TextView detailDateTextView;
         TextView detailTimeLocationPriceTextView;
         ImageButton detailStarButton;
@@ -88,6 +89,7 @@ public class DetailActivity extends AppCompatActivity {
             //initialize the views -- get the reference
             detailImageView = (ImageView)rootView.findViewById(R.id.imageview_detail);
             detailTitleTextView = (TextView)rootView.findViewById(R.id.textview_detail_title);
+            detailInterestTextView = (TextView)rootView.findViewById(R.id.textview_detail_interest);
             detailDateTextView = (TextView)rootView.findViewById(R.id.textview_detail_date);
             detailTimeLocationPriceTextView = (TextView)rootView.findViewById(R.id.textview_detail_time_location_price);
             detailStarButton = (ImageButton)rootView.findViewById(R.id.button_detail_star);
@@ -112,6 +114,7 @@ public class DetailActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     detailTitleTextView.setText(event.getTitle());
+                    detailInterestTextView.setText(event.getInterests());
                     detailDateTextView.setText(event.getDate());
                     detailTimeLocationPriceTextView.setText(event.getTime() + " | " +
                             event.getLocation()); // + " | " + event.getPrice());

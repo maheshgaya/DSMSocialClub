@@ -1,11 +1,11 @@
-package com.duse.android.dsmsocialclub.model;
+package com.duse.android.dsmsocialclub.database;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 
 import com.duse.android.dsmsocialclub.Constant;
 import com.duse.android.dsmsocialclub.R;
+import com.duse.android.dsmsocialclub.model.EventModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,7 +76,7 @@ public class EventJsonGetter {
                 String description = eventObject.getString(Constant.EVENT_DESCRIPTION);
                 String imageUrl = eventObject.getString(Constant.EVENT_IMAGE_URL);
                 String location = eventObject.getString(Constant.EVENT_LOCATION);
-                Log.d(TAG, "getEventsList: " + interest);
+                //Log.d(TAG, "getEventsList: " + interest);
                 EventModel event = new EventModel(id, title, description, date, time, location, imageUrl, interest);
 
                 eventsList.add(event);

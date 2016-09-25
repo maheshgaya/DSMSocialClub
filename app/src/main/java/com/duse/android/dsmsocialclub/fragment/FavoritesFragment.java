@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.duse.android.dsmsocialclub.R;
 import com.duse.android.dsmsocialclub.adapter.EventAdapter;
-import com.duse.android.dsmsocialclub.model.EventJsonGetter;
+import com.duse.android.dsmsocialclub.database.EventJsonGetter;
 import com.duse.android.dsmsocialclub.model.EventModel;
 
 import java.util.List;
@@ -32,15 +32,14 @@ public class FavoritesFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        //if array is zero, get data
-        if (mEvents.length == 0) {
-            updateEvents();
-        }
+        //get data
+        updateEvents();
+
     }
 
     public void updateEvents(){
         //get event updates
-        FetchEventTask fetchEventTask = new FetchEventTask();
+        FetchEventFavoriteTask fetchEventTask = new FetchEventFavoriteTask();
         //TODO: Add params for sorting, shared preferences, if have time
         fetchEventTask.execute();
     }
@@ -74,8 +73,8 @@ public class FavoritesFragment extends Fragment {
     }
 
 
-    private class FetchEventTask extends AsyncTask<Void, Void, EventModel[]> {
-        private final String LOG_TAG = FetchEventTask.class.getSimpleName();
+    private class FetchEventFavoriteTask extends AsyncTask<Void, Void, EventModel[]> {
+        private final String LOG_TAG = FetchEventFavoriteTask.class.getSimpleName();
         @Override
         protected void onPostExecute(EventModel[] result) {
             //if result is not empty, update adapter and the UI
