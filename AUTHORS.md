@@ -4,7 +4,7 @@
 ###Programmers:
 - Mahesh Gaya
 - Henry Parker
-- Ryan Kurt
+- ~~Ryan Kurt~~
 
 ###Designer:
 - Emily Walton
