@@ -69,6 +69,7 @@
                 android:defaultValue="true"/>
 
         </PreferenceScreen>
+        <!--
         <ListPreference
             android:icon="@drawable/ic_sort"
             android:title="@string/pref_sort_by_label"
@@ -76,5 +77,6 @@
             android:defaultValue="@string/pref_sort_by_default_key"
             android:entryValues="@array/pref_sort_by_values"
             android:entries="@array/pref_sort_by_options" />
+          -->
     </PreferenceCategory>
 </PreferenceScreen>

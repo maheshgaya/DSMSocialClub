@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.duse.android.dsmsocialclub.Constant;
 import com.duse.android.dsmsocialclub.R;
@@ -41,7 +42,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
     public EventAdapter(Context context, EventModel[] events){
         eventList = Arrays.asList(events);
         mContext = context;
-        //initialize database
+        //get link to database
         favoriteDBHelper = new FavoriteDBHelper(context);
         //get the ability to write to database
         dbWrite = favoriteDBHelper.getWritableDatabase();
@@ -67,8 +68,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                 FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID,
                 FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN
         };
-        String selection = FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID + " =?";
-        String[] selectionArgs = {Integer.toString(event.getId())};
+        final String selection = FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID + " =?";
+        final String[] selectionArgs = {Integer.toString(event.getId())};
+
         Cursor cursor = dbRead.query(
                 FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, //Table name
                 projection, //columns to return
@@ -80,10 +82,34 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
         );
 
 
-        //holder.eventStarButton.setImageResource(R.drawable.ic_star);
-        //holder.eventStarButton.setTag("2");
-        holder.eventStarButton.setImageResource(R.drawable.ic_star_border);
-        holder.eventStarButton.setTag("1");
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        //initialize
+        int favoriteEventId = -1;
+        int favoriteEventBoolean = 0;
+        try {
+            favoriteEventId = cursor.getInt(0);
+            favoriteEventBoolean =  cursor.getInt(1);
+        }catch (android.database.CursorIndexOutOfBoundsException e){
+            //reset boolean
+            favoriteEventBoolean = 0;
+            //Log.e(TAG, "onBindViewHolder: ", e );
+            //e.printStackTrace();
+        }finally {
+            cursor.close();
+        }
+
+        //check database to see if event is favorite or not
+        if (favoriteEventBoolean == 0){
+            holder.eventStarButton.setImageResource(R.drawable.ic_star_border);
+            holder.eventStarButton.setTag("1");
+        } else if (favoriteEventBoolean == 1){
+            holder.eventStarButton.setImageResource(R.drawable.ic_star);
+            holder.eventStarButton.setTag("2");
+        };
+
 
         holder.eventStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +119,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                         holder.eventStarButton.setImageResource(R.drawable.ic_star_border);
                         holder.eventStarButton.setTag("1");
                         //remove from database
-
+                        dbWrite.delete(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME,
+                                selection,
+                                selectionArgs);
+                        Toast.makeText(mContext, "Event removed to your " +
+                                mContext.getString(R.string.favorites_fragment_title) +
+                                " list.", Toast.LENGTH_SHORT).show();
 
                     } else {
                         holder.eventStarButton.setImageResource(R.drawable.ic_star);
@@ -101,7 +132,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                         //add to database
                         values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID, event.getId());
                         values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN, Constant.FAVORITE_BOOLEAN_TRUE);
-                        dbWrite.insert(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, null, values);
+                        long rowId = dbWrite.insert(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, null, values);
+                        //Log.d(TAG, "onClick: " + rowId);
+                        Toast.makeText(mContext, "Event added to your " + mContext.getString(R.string.favorites_fragment_title) +
+                        " list.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -134,6 +168,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
             Log.e(TAG, "getView: " + e.getMessage(), e );
             e.printStackTrace();
         }
+
 
     }
 

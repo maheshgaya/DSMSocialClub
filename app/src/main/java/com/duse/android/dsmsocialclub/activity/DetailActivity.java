@@ -1,6 +1,9 @@
 package com.duse.android.dsmsocialclub.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,15 +19,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.duse.android.dsmsocialclub.Constant;
 import com.duse.android.dsmsocialclub.R;
+import com.duse.android.dsmsocialclub.database.FavoriteContract;
+import com.duse.android.dsmsocialclub.database.FavoriteDBHelper;
 import com.duse.android.dsmsocialclub.model.EventModel;
 import com.squareup.picasso.Picasso;
 
 
-//TODO: This Activity will show each individual events
-    //So when you tap on the event this activity will be triggered
+
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -37,6 +42,7 @@ public class DetailActivity extends AppCompatActivity {
                     .add(R.id.container_detail, new DetailFragment())
                     .commit();
         }
+
     }
 
     /**
@@ -71,6 +77,10 @@ public class DetailActivity extends AppCompatActivity {
     public static class DetailFragment extends Fragment{
         public static final String LOG_TAG = DetailFragment.class.getSimpleName();
 
+        private FavoriteDBHelper favoriteDBHelper;
+        private SQLiteDatabase dbWrite;
+        private SQLiteDatabase dbRead;
+
         //the views
         ImageView detailImageView;
         TextView detailTitleTextView;
@@ -86,6 +96,13 @@ public class DetailActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
             Intent intent = getActivity().getIntent();
 
+            //get link to database
+            favoriteDBHelper = new FavoriteDBHelper(getContext());
+            //get the ability to write to database
+            dbWrite = favoriteDBHelper.getWritableDatabase();
+            //get the ability to write to database
+            dbRead = favoriteDBHelper.getReadableDatabase();
+
             //initialize the views -- get the reference
             detailImageView = (ImageView)rootView.findViewById(R.id.imageview_detail);
             detailTitleTextView = (TextView)rootView.findViewById(R.id.textview_detail_title);
@@ -97,7 +114,7 @@ public class DetailActivity extends AppCompatActivity {
 
             if (intent != null){
                 if (intent.hasExtra(Constant.EXTRA_EVENT_PARCELABLE)){
-                    EventModel event = (EventModel)intent.getParcelableExtra(Constant.EXTRA_EVENT_PARCELABLE);
+                    final EventModel event = (EventModel)intent.getParcelableExtra(Constant.EXTRA_EVENT_PARCELABLE);
                     try {
                         Picasso
                                 .with(getContext())
@@ -122,10 +139,55 @@ public class DetailActivity extends AppCompatActivity {
 
 
                     //TODO: Check if user has already favorite this event
-                    //detailStarButton.setImageResource(R.drawable.ic_star);
-                    //detailStarButton.setTag("2");
-                    detailStarButton.setImageResource(R.drawable.ic_star_border);
-                    detailStarButton.setTag("1");
+                    //Create a new map of values, where column names are the keys
+                    final ContentValues values = new ContentValues();
+                    //read from sqlite
+                    String[] projection = {
+                            FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID,
+                            FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN
+                    };
+                    final String selection = FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID + " =?";
+                    final String[] selectionArgs = {Integer.toString(event.getId())};
+
+                    Cursor cursor = dbRead.query(
+                            FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, //Table name
+                            projection, //columns to return
+                            selection, //columns for WHERE Clause
+                            selectionArgs, //Values for WHERE Clause
+                            null, //don't group the rows
+                            null, //don't filter by row groups
+                            null //don't sort(since value will be unique)
+                    );
+
+
+                    if (cursor != null){
+                        cursor.moveToFirst();
+                    }
+
+                    //initialize
+                    int favoriteEventId = -1;
+                    int favoriteEventBoolean = 0;
+                    try {
+                        favoriteEventId = cursor.getInt(0);
+                        favoriteEventBoolean =  cursor.getInt(1);
+                    }catch (android.database.CursorIndexOutOfBoundsException e){
+                        //reset boolean
+                        favoriteEventBoolean = 0;
+                        //Log.e(TAG, "onBindViewHolder: ", e );
+                        //e.printStackTrace();
+                    }finally {
+                        cursor.close();
+                    }
+
+
+                    //check database to see if event is favorite or not
+                    if (favoriteEventBoolean == 0){
+                        detailStarButton.setImageResource(R.drawable.ic_star_border);
+                        detailStarButton.setTag("1");
+                    } else if (favoriteEventBoolean == 1){
+                        detailStarButton.setImageResource(R.drawable.ic_star);
+                        detailStarButton.setTag("2");
+                    };
 
                     detailStarButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -134,9 +196,24 @@ public class DetailActivity extends AppCompatActivity {
                                 if (detailStarButton.getTag().equals("2")){
                                     detailStarButton.setImageResource(R.drawable.ic_star_border);
                                     detailStarButton.setTag("1");
+                                    //remove from database
+                                    dbWrite.delete(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME,
+                                            selection,
+                                            selectionArgs);
+                                    Toast.makeText(getContext(), "Event removed to your " +
+                                            getContext().getString(R.string.favorites_fragment_title) +
+                                            " list.", Toast.LENGTH_SHORT).show();
                                 } else {
                                     detailStarButton.setImageResource(R.drawable.ic_star);
                                     detailStarButton.setTag("2");
+                                    //add to database
+                                    values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID, event.getId());
+                                    values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN, Constant.FAVORITE_BOOLEAN_TRUE);
+                                    long rowId = dbWrite.insert(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, null, values);
+                                    Log.d(LOG_TAG, "onClick: " + rowId);
+                                    Toast.makeText(getContext(), "Event added to your " +
+                                            getContext().getString(R.string.favorites_fragment_title) +
+                                            " list.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }

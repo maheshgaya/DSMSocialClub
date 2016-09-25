@@ -1,5 +1,8 @@
 package com.duse.android.dsmsocialclub.fragment;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,16 +17,21 @@ import android.view.ViewGroup;
 import com.duse.android.dsmsocialclub.R;
 import com.duse.android.dsmsocialclub.adapter.EventAdapter;
 import com.duse.android.dsmsocialclub.database.EventJsonGetter;
+import com.duse.android.dsmsocialclub.database.FavoriteContract;
+import com.duse.android.dsmsocialclub.database.FavoriteDBHelper;
 import com.duse.android.dsmsocialclub.model.EventModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class FavoritesFragment extends Fragment {
-
+    private static final String TAG = FavoritesFragment.class.getSimpleName();
     private EventModel[] mEvents = {}; //store events
     private EventAdapter mEventAdapter; //use for recycleview/cardview
     private RecyclerView mRecycleView; //use for UI
+    private FavoriteDBHelper favoriteDBHelper;
+    private SQLiteDatabase dbRead;
 
     /**
      * onStart()
@@ -37,11 +45,40 @@ public class FavoritesFragment extends Fragment {
 
     }
 
+
     public void updateEvents(){
+
         //get event updates
-        FetchEventFavoriteTask fetchEventTask = new FetchEventFavoriteTask();
-        //TODO: Add params for sorting, shared preferences, if have time
-        fetchEventTask.execute();
+        FetchEventFavoriteTask fetchEventFavoriteTask = new FetchEventFavoriteTask();
+        //read from database and add to array, then send that array
+        //read from sqlite
+        Cursor cursor = dbRead.rawQuery("SELECT * FROM " + FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, null);
+        Integer[] eventIds = new Integer[]{};
+        int size = cursor.getCount();
+        int rowId = 0;
+
+        try {
+            if (size != 0) {
+                eventIds = new Integer[size];
+
+                if (cursor != null) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        int eventId = cursor.getInt(cursor.getColumnIndex(FavoriteContract.FeedEntry.FAVORITE_COLUMN_EVENT_ID));
+                        //Log.d(TAG, "updateEvents: " + eventId + " @row: " + rowId);
+                        eventIds[rowId] = eventId;
+                        cursor.moveToNext();
+                        rowId = rowId + 1;
+                    }
+                }
+            }
+        }catch (java.lang.ArrayIndexOutOfBoundsException e){
+            Log.e(TAG, "updateEvents: " + rowId ,e );
+        } finally {
+            cursor.close();
+        }
+
+        fetchEventFavoriteTask.execute(eventIds);
     }
 
     public FavoritesFragment(){
@@ -53,6 +90,10 @@ public class FavoritesFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //saves instance state for fragment
         setRetainInstance(true);
+        //get link to database
+        favoriteDBHelper = new FavoriteDBHelper(getContext());
+        //get the ability to write to database
+        dbRead = favoriteDBHelper.getReadableDatabase();
 
     }
 
@@ -73,7 +114,7 @@ public class FavoritesFragment extends Fragment {
     }
 
 
-    private class FetchEventFavoriteTask extends AsyncTask<Void, Void, EventModel[]> {
+    private class FetchEventFavoriteTask extends AsyncTask<Integer, Void, EventModel[]> {
         private final String LOG_TAG = FetchEventFavoriteTask.class.getSimpleName();
         @Override
         protected void onPostExecute(EventModel[] result) {
@@ -94,9 +135,12 @@ public class FavoritesFragment extends Fragment {
         }
 
         @Override
-        protected EventModel[] doInBackground(Void... voids) {
+        protected EventModel[] doInBackground(Integer... params) {
+            if (params.length == 0){
+                return null;
+            }
             //get events from json
-            List<EventModel> eventList = new EventJsonGetter(getActivity()).getEventsList();
+            List<EventModel> eventList = new EventJsonGetter(getActivity()).getEventsList(params);
             EventModel[] events = eventList.toArray(new EventModel[eventList.size()]);
             return events;
         }

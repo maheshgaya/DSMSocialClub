@@ -38,6 +38,7 @@ public class ExploreFragment extends Fragment{
         //get data
         updateEvents();
 
+
     }
 
     public void updateEvents(){
