@@ -26,6 +26,7 @@ public class EventModel implements Parcelable{
     String location; //the location of the event
     String imageURL; //the url of the event's image
     String interests; //the interests that event concerns
+    Boolean favorite; //is event favorite or not (will use SQLite)
 
     public EventModel(int id, String title, String description,
                       String date, String time, String location,
@@ -52,6 +53,7 @@ public class EventModel implements Parcelable{
         imageURL = in.readString();
         interests = in.readString();
     }
+
     public int getId() {
         return id;
     }
@@ -112,8 +114,15 @@ public class EventModel implements Parcelable{
         return interests;
     }
 
-    public void setTags(String tags) {
-        this.interests = tags;
+    public void setInterests(String interests) {
+        this.interests = interests;
+    }
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 
     @Override
