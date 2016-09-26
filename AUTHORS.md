@@ -2,7 +2,7 @@
 [Drake University](http://www.drake.edu), Fall 2016
 
 ###Programmers:
-- Mahesh Gaya
+- Mahesh Gaya (Lead Programmer)
 - Henry Parker
 - Ryan Kurt
 
