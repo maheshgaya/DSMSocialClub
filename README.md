@@ -1,10 +1,13 @@
 # DSM Social Club
-Des Moines Social Club Software Engineering Project 1 Fall 2016
-###TODO: Documentation
+Des Moines Social Club Software Engineering (Group 6 - Project 1 - Fall 2016)
 
-Disclamer: 
+##Description
+This app recommends events that are offered by the Des Moines Social Club, based on the interests that you choose. You can also save events that you like.
+
+**Disclamer:** 
 * We do not own any of the pictures used in this project.
 * The icons used in this project are from [Google Material Icons](https://design.google.com/icons/)
+* Information about the events in events.json are from the [Des Moines Social Club website](http://desmoinessocialclub.org/events/)
 
 ##License
 Copyright 2016 Drake University Software Engineering (Group 6 - Project 1 - Fall 2016)
