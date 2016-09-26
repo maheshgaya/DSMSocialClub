@@ -47,37 +47,37 @@ public class HomeFragment extends Fragment {
         Boolean[] preferences = new Boolean[15];
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-        Boolean prefCircus = prefs.getBoolean(getString(R.string.interest_circus_value), true);
+        Boolean prefCircus = prefs.getBoolean(getString(R.string.interest_circus_value), false);
         preferences[0] = prefCircus;
-        Boolean prefComedy = prefs.getBoolean(getString(R.string.interest_comedy_value), true);
+        Boolean prefComedy = prefs.getBoolean(getString(R.string.interest_comedy_value), false);
         preferences[1] = prefComedy;
-        Boolean prefCulinary = prefs.getBoolean(getString(R.string.interest_culinary_value), true);
+        Boolean prefCulinary = prefs.getBoolean(getString(R.string.interest_culinary_value), false);
         preferences[2] = prefCulinary;
-        Boolean prefDanceMovement = prefs.getBoolean(getString(R.string.interest_dance_movement_value), true);
+        Boolean prefDanceMovement = prefs.getBoolean(getString(R.string.interest_dance_movement_value), false);
         preferences[3] = prefDanceMovement;
-        Boolean prefEducation = prefs.getBoolean(getString(R.string.interest_education_value), true);
+        Boolean prefEducation = prefs.getBoolean(getString(R.string.interest_education_value), false);
         preferences[4] = prefEducation;
 
-        Boolean prefFeaturedEvent = prefs.getBoolean(getString(R.string.interest_featured_event_value), true);
+        Boolean prefFeaturedEvent = prefs.getBoolean(getString(R.string.interest_featured_event_value), false);
         preferences[5] = prefFeaturedEvent;
-        Boolean prefFilm = prefs.getBoolean(getString(R.string.interest_film_value), true);
+        Boolean prefFilm = prefs.getBoolean(getString(R.string.interest_film_value), false);
         preferences[6] = prefFilm;
-        Boolean prefKids = prefs.getBoolean(getString(R.string.interest_kids_value), true);
+        Boolean prefKids = prefs.getBoolean(getString(R.string.interest_kids_value), false);
         preferences[7] = prefKids;
-        Boolean prefLifestyle = prefs.getBoolean(getString(R.string.interest_lifestyle_value), true);
+        Boolean prefLifestyle = prefs.getBoolean(getString(R.string.interest_lifestyle_value), false);
         preferences[8] = prefLifestyle;
-        Boolean prefLiterary = prefs.getBoolean(getString(R.string.interest_literary_value), true);
+        Boolean prefLiterary = prefs.getBoolean(getString(R.string.interest_literary_value), false);
         preferences[9] = prefLiterary;
 
-        Boolean prefMusic = prefs.getBoolean(getString(R.string.interest_music_value), true);
+        Boolean prefMusic = prefs.getBoolean(getString(R.string.interest_music_value), false);
         preferences[10] = prefMusic;
-        Boolean prefSocial = prefs.getBoolean(getString(R.string.interest_social_value), true);
+        Boolean prefSocial = prefs.getBoolean(getString(R.string.interest_social_value), false);
         preferences[11] = prefSocial;
-        Boolean prefTechnology = prefs.getBoolean(getString(R.string.interest_technology_value), true);
+        Boolean prefTechnology = prefs.getBoolean(getString(R.string.interest_technology_value), false);
         preferences[12] = prefTechnology;
-        Boolean prefTheater = prefs.getBoolean(getString(R.string.interest_theater_value), true);
+        Boolean prefTheater = prefs.getBoolean(getString(R.string.interest_theater_value), false);
         preferences[13] = prefTheater;
-        Boolean prefVisualArt = prefs.getBoolean(getString(R.string.interest_visual_art_value), true);
+        Boolean prefVisualArt = prefs.getBoolean(getString(R.string.interest_visual_art_value), false);
         preferences[14] = prefVisualArt;
 
 

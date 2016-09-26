@@ -10,63 +10,63 @@
             <CheckBoxPreference
                 android:key="@string/interest_circus_value"
                 android:title="@string/interest_circus"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_comedy_value"
                 android:title="@string/interest_comedy"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_culinary_value"
                 android:title="@string/interest_culinary"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_dance_movement_value"
                 android:title="@string/interest_dance_movement"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_education_value"
                 android:title="@string/interest_education"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_featured_event_value"
                 android:title="@string/interest_featured_event"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_film_value"
                 android:title="@string/interest_film"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_kids_value"
                 android:title="@string/interest_kids"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_lifestyle_value"
                 android:title="@string/interest_lifestyle"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_literary_value"
                 android:title="@string/interest_literary"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_music_value"
                 android:title="@string/interest_music"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_social_value"
                 android:title="@string/interest_social"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_technology_value"
                 android:title="@string/interest_technology"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_theater_value"
                 android:title="@string/interest_theater"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
             <CheckBoxPreference
                 android:key="@string/interest_visual_art_value"
                 android:title="@string/interest_visual_art"
-                android:defaultValue="true"/>
+                android:defaultValue="false"/>
 
         </PreferenceScreen>
         <!--
