@@ -61,5 +61,16 @@
     <string name="button_learn_more">Info</string>
     <string name="button_favorite">Favorite</string>
     <string name="button_unfavorite">Unfavorite</string>
+    
+    <string name="name_mahesh_gaya">Mahesh Gaya</string>
+    <string name="name_henry_parker">Henry Parker</string>
+    <string name="name_ryan_kurt">Ryan Kurt</string>
+    <string name="name_emily_walton">Emily Walton</string>
+    <string name="name_melissa_studach">Melissa Studach</string>
 
+    <string name="about_label">About</string>
+    <string name="about_credits">Credits</string>
+    <string name="about_programmer">Programmers</string>
+    <string name="about_designer">Designer</string>
+    <string name="about_writer">Documentation Writer</string>
 </resources>
