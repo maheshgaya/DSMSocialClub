@@ -11,6 +11,16 @@ Click [here](https://drive.google.com/open?id=0B6-f8wELjdllZ2E5Ums1b0NkSUE) to s
 * The icons used in this project are from [Google Material Icons](https://design.google.com/icons/)
 * Information about the events in events.json are from the [Des Moines Social Club website](http://desmoinessocialclub.org/events/)
 
+##Using Source Code in Android Studio
+1. Clone this repository
+
+  ```
+    $ git clone https://github.com/maheshgaya/DSMSocialClub.git
+  ```
+2. Import the root folder of the project from Android Studio (File -> New -> Import Project)
+3. Run the app using an emulator that has an SDK higher than **version 22**
+
+
 ##License
 Copyright 2016 Drake University Software Engineering (Group 6 - Project 1 - Fall 2016)
 
