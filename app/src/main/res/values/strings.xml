@@ -73,4 +73,7 @@
     <string name="about_programmer">Programmers</string>
     <string name="about_designer">Designer</string>
     <string name="about_writer">Documentation Writer</string>
+
+    <string name="event_removed">Event removed from your Saved list</string>
+    <string name="event_added">Event added to your Saved list</string>
 </resources>

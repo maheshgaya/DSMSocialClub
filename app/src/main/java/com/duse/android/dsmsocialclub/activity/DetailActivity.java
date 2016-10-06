@@ -200,9 +200,7 @@ public class DetailActivity extends AppCompatActivity {
                                     dbWrite.delete(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME,
                                             selection,
                                             selectionArgs);
-                                    Toast.makeText(getContext(), "Event removed to your " +
-                                            getContext().getString(R.string.favorites_fragment_title) +
-                                            " list.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), getResources().getString(R.string.event_removed), Toast.LENGTH_SHORT).show();
                                 } else {
                                     detailStarButton.setImageResource(R.drawable.ic_star);
                                     detailStarButton.setTag("2");
@@ -211,9 +209,7 @@ public class DetailActivity extends AppCompatActivity {
                                     values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN, Constant.FAVORITE_BOOLEAN_TRUE);
                                     long rowId = dbWrite.insert(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, null, values);
                                     Log.d(LOG_TAG, "onClick: " + rowId);
-                                    Toast.makeText(getContext(), "Event added to your " +
-                                            getContext().getString(R.string.favorites_fragment_title) +
-                                            " list.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), getResources().getString(R.string.event_added), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }

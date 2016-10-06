@@ -122,9 +122,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                         dbWrite.delete(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME,
                                 selection,
                                 selectionArgs);
-                        Toast.makeText(mContext, "Event removed to your " +
-                                mContext.getString(R.string.favorites_fragment_title) +
-                                " list.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, mContext.getResources().getString(R.string.event_removed), Toast.LENGTH_SHORT).show();
 
                     } else {
                         holder.eventStarButton.setImageResource(R.drawable.ic_star);
@@ -134,8 +132,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                         values.put(FavoriteContract.FeedEntry.FAVORITE_COLUMN_BOOLEAN, Constant.FAVORITE_BOOLEAN_TRUE);
                         long rowId = dbWrite.insert(FavoriteContract.FeedEntry.FAVORITE_TABLE_NAME, null, values);
                         //Log.d(TAG, "onClick: " + rowId);
-                        Toast.makeText(mContext, "Event added to your " + mContext.getString(R.string.favorites_fragment_title) +
-                        " list.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, mContext.getResources().getString(R.string.event_added), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
