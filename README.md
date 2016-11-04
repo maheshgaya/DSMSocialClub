@@ -1,4 +1,4 @@
-# DSM Social Club
+# 515 Social
 Des Moines Social Club Software Engineering (Group 6 - Project 1 - Fall 2016)
 
 ##Description
