@@ -1,10 +1,12 @@
 # 515 Social
 Des Moines Social Club Software Engineering (Group 6 - Project 1 - Fall 2016)
 
-##Description
+## Description
 This app recommends events that are offered by the Des Moines Social Club, based on the interests that you choose. You can also save events that you like.
 
 Click [here](https://drive.google.com/open?id=0B6-f8wELjdllZ2E5Ums1b0NkSUE) to see our documentation and designs.
+
+<img src="https://github.com/maheshgaya/maheshgaya.com/blob/master/images/dsmExplore.png" width=280 />
 
 **Disclamer:** 
 * We do not own any of the pictures used in this project.
@@ -21,7 +23,7 @@ Click [here](https://drive.google.com/open?id=0B6-f8wELjdllZ2E5Ums1b0NkSUE) to s
 3. Run the app using an emulator that has an SDK higher than **version 22**
 
 
-##License
+## License
 Copyright 2016 Drake University Software Engineering (Group 6 - Project 1 - Fall 2016)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
